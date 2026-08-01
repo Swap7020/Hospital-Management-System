@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">Patient Registration</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="row">
+
+            <div class="col-md-6 mb-3">
+                <label>First Name</label>
+                {{ form.first_name }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Last Name</label>
+                {{ form.last_name }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Age</label>
+                {{ form.age }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Gender</label>
+                {{ form.gender }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Phone</label>
+                {{ form.phone }}
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label>Email</label>
+                {{ form.email }}
+            </div>
+
+            <div class="col-12 mb-3">
+                <label>Address</label>
+                {{ form.address }}
+            </div>
+
+        </div>
+
+        <button class="btn btn-primary">
+            Save Patient
+        </button>
+
+        <a href="{% url 'patient_list' %}" class="btn btn-secondary">
+            Back
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}
