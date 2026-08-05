@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>
+
+                {% if form.instance.pk %}
+                    Edit Prescription
+                {% else %}
+                    Add Prescription
+                {% endif %}
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">Appointment</label>
+
+                        {{ form.appointment }}
+
+                        <div class="text-danger">
+
+                            {{ form.appointment.errors }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">Diagnosis</label>
+
+                        {{ form.diagnosis }}
+
+                        <div class="text-danger">
+
+                            {{ form.diagnosis.errors }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">Medicines</label>
+
+                        {{ form.medicines }}
+
+                        <div class="text-danger">
+
+                            {{ form.medicines.errors }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">Dosage</label>
+
+                        {{ form.dosage }}
+
+                        <div class="text-danger">
+
+                            {{ form.dosage.errors }}
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">Instructions</label>
+
+                        {{ form.instructions }}
+
+                        <div class="text-danger">
+
+                            {{ form.instructions.errors }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% if form.non_field_errors %}
+
+                <div class="alert alert-danger">
+
+                    {{ form.non_field_errors }}
+
+                </div>
+
+                {% endif %}
+
+                <button class="btn btn-success">
+
+                    Save Prescription
+
+                </button>
+
+                <a href="{% url 'prescription_list' %}" class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

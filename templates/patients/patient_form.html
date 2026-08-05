@@ -15,16 +15,25 @@
             <div class="col-md-6 mb-3">
                 <label>First Name</label>
                 {{ form.first_name }}
+                <div class="text-danger">
+                {{ form.first_name.errors }}
+                </div>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label>Last Name</label>
                 {{ form.last_name }}
+                <div class="text-danger">
+                {{ form.last_name.errors }}
+                </div>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label>Age</label>
                 {{ form.age }}
+                <div class="text-danger">
+                    {{ form.age.errors}}
+                </div>
             </div>
 
             <div class="col-md-6 mb-3">
@@ -40,6 +49,9 @@
             <div class="col-md-6 mb-3">
                 <label>Email</label>
                 {{ form.email }}
+                <div class="text-danger">
+                {{ form.email.errors }}
+                </div>
             </div>
 
             <div class="col-12 mb-3">

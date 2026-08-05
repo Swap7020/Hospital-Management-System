@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3 class="mb-0">
+
+                {% if form.instance.pk %}
+                    Edit Doctor
+                {% else %}
+                    Add Doctor
+                {% endif %}
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">First Name</label>
+                        {{ form.first_name }}
+                        <div class="text-danger">
+                            {{ form.first_name.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Last Name</label>
+                        {{ form.last_name }}
+                        <div class="text-danger">
+                            {{ form.last_name.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Department</label>
+                        {{ form.department }}
+                        <div class="text-danger">
+                            {{ form.department.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Specialization</label>
+                        {{ form.specialization }}
+                        <div class="text-danger">
+                            {{ form.specialization.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Qualification</label>
+                        {{ form.qualification }}
+                        <div class="text-danger">
+                            {{ form.qualification.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Experience</label>
+                        {{ form.experience }}
+                        <div class="text-danger">
+                            {{ form.experience.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Gender</label>
+                        {{ form.gender }}
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Phone</label>
+                        {{ form.phone }}
+                        <div class="text-danger">
+                            {{ form.phone.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Email</label>
+                        {{ form.email }}
+                        <div class="text-danger">
+                            {{ form.email.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Consultation Fee</label>
+                        {{ form.consultation_fee }}
+                        <div class="text-danger">
+                            {{ form.consultation_fee.errors }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <div class="form-check">
+
+                            {{ form.is_available }}
+
+                            <label class="form-check-label">
+                                Available for Consultation
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button class="btn btn-success">
+
+                    Save Doctor
+
+                </button>
+
+                <a href="{% url 'doctor_list' %}" class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

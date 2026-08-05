@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3>
+
+                {% if form.instance.pk %}
+                    Edit Bill
+                {% else %}
+                    Generate Bill
+                {% endif %}
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="alert alert-info">
+
+                <strong>Note:</strong>
+
+                Consultation fee is automatically fetched from the selected doctor's profile.
+
+            </div>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Appointment
+                        </label>
+
+                        {{ form.appointment }}
+
+                        <div class="text-danger">
+                            {{ form.appointment.errors }}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Medicine Charge
+                        </label>
+
+                        {{ form.medicine_charge }}
+
+                        <div class="text-danger">
+                            {{ form.medicine_charge.errors }}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Laboratory Charge
+                        </label>
+
+                        {{ form.laboratory_charge }}
+
+                        <div class="text-danger">
+                            {{ form.laboratory_charge.errors }}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Other Charge
+                        </label>
+
+                        {{ form.other_charge }}
+
+                        <div class="text-danger">
+                            {{ form.other_charge.errors }}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Payment Status
+                        </label>
+
+                        {{ form.payment_status }}
+
+                        <div class="text-danger">
+                            {{ form.payment_status.errors }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% if form.non_field_errors %}
+
+                <div class="alert alert-danger">
+
+                    {{ form.non_field_errors }}
+
+                </div>
+
+                {% endif %}
+
+                <button class="btn btn-success">
+
+                    Save Bill
+
+                </button>
+
+                <a href="{% url 'bill_list' %}"
+                   class="btn btn-secondary">
+
+                    Cancel
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

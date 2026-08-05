@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3 class="mb-0">
+
+                {% if form.instance.pk %}
+                    Edit Appointment
+                {% else %}
+                    Book Appointment
+                {% endif %}
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <!-- Patient -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Patient</label>
+                        {{ form.patient }}
+                        <div class="text-danger">
+                            {{ form.patient.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Doctor -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Doctor</label>
+                        {{ form.doctor }}
+                        <div class="text-danger">
+                            {{ form.doctor.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Appointment Date -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Appointment Date</label>
+                        {{ form.appointment_date }}
+                        <div class="text-danger">
+                            {{ form.appointment_date.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Appointment Time -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Appointment Time</label>
+                        {{ form.appointment_time }}
+                        <div class="text-danger">
+                            {{ form.appointment_time.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Status</label>
+                        {{ form.status }}
+                        <div class="text-danger">
+                            {{ form.status.errors }}
+                        </div>
+                    </div>
+
+                    <!-- Reason -->
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Reason for Appointment</label>
+                        {{ form.reason }}
+                        <div class="text-danger">
+                            {{ form.reason.errors }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Non-field Errors -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="btn btn-success">
+                    Save Appointment
+                </button>
+
+                <a href="{% url 'appointment_list' %}" class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
