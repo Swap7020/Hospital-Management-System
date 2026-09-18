@@ -9,7 +9,6 @@ services:
     plan: free
     name: hospital-management-system
     runtime: python
-    pythonVersion: "3.12.8"
     buildCommand: "./build.sh"
     startCommand: "gunicorn config.wsgi:application"
     envVars:
@@ -23,3 +22,5 @@ services:
         value: 4
       - key: RENDER
         value: true
+      - key: PYTHON_VERSION
+        value: 3.12.8
