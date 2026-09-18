@@ -9,6 +9,7 @@ services:
     plan: free
     name: hospital-management-system
     runtime: python
+    pythonVersion: "3.12.8"
     buildCommand: "./build.sh"
     startCommand: "gunicorn config.wsgi:application"
     envVars:
