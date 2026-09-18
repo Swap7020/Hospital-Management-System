@@ -1,0 +1,24 @@
+databases:
+  - name: hospital-db
+    plan: free
+    databaseName: hospital_management
+    user: hospital_admin
+
+services:
+  - type: web
+    plan: free
+    name: hospital-management-system
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hospital-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: RENDER
+        value: true
